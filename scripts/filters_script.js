@@ -119,6 +119,13 @@ loadCategoryData().then(() => {
 function constructSearchURL() {
   const params = new URLSearchParams(window.location.search);
 
+  // Preserve the `q` parameter
+  const query = params.get("q");
+  if (!query) {
+    console.error("No search query (`q`) found in the URL!");
+    return;
+  }
+
   // Add or update price range in the parameters
   params.set("priceMin", priceMin.value);
   params.set("priceMax", priceMax.value);
@@ -150,8 +157,11 @@ function constructSearchURL() {
     params.delete("filters"); // Remove filters if no checkboxes are selected
   }
 
-  // Redirect to the updated URL
-  window.location.href = `searching.html?${params.toString()}`;
+  // Construct the new URL with preserved `q` and updated filters
+  const newURL = `searching.html?${params.toString()}`;
+
+  // Redirect to the new URL
+  window.location.href = newURL;
 }
 
 // Add event listener to the "Apply Filters" button
