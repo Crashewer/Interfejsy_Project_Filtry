@@ -21,32 +21,18 @@ filterSections.forEach((header) => {
   });
 });
 
-// Clear all filters
+// Clear all filters and redirect to keep only `q`
 clearFiltersBtn.addEventListener("click", function () {
-  // Reset checkboxes
-  const checkboxes = document.querySelectorAll(".filter-checkbox");
-  checkboxes.forEach((checkbox) => {
-    checkbox.checked = false;
-  });
+  // Retrieve the current `q` parameter
+  const params = new URLSearchParams(window.location.search);
+  const query = params.get("q");
 
-  // Reset radio buttons
-  const radioButtons = document.querySelectorAll(".filter-radio");
-  radioButtons.forEach((radio) => {
-    if (radio.id === "no-sort" || radio.value === "none") {
-      radio.checked = true;
-    } else {
-      radio.checked = false;
-    }
-  });
-
-  // Reset price range
-  priceMin.value = priceMin.min;
-  priceMax.value = priceMax.max;
-  minValueDisplay.textContent = `${priceMin.min} zł`;
-  maxValueDisplay.textContent = `${priceMax.max} zł`;
-
-  // Clear dynamic category content
-  dynamicCategoryContent.innerHTML = "";
+  // Redirect to the `searching.html` page with only the `q` parameter
+  if (query) {
+    window.location.href = `searching.html?q=${query}`;
+  } else {
+    window.location.href = "searching.html"; // Fallback if `q` is missing
+  }
 });
 
 // Update price values dynamically
