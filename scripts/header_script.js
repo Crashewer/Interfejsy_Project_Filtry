@@ -258,26 +258,29 @@ function getFromLocalStorage(key) {
 //budowanie header
 // FUNKCJA DO BUDOWANIA MENU W NAGLOWKU
 function buildMenu(data) {
+  // Find the <ul> element with class "menu" inside the header
   const menu = document.querySelector(".header ul.menu");
 
   if (!menu) {
-    console.error("Nie znaleziono elementu <ul> z klasą 'menu' wewnątrz '.header'.");
+    console.error("Element <ul> with class 'menu' inside '.header' not found.");
     return;
   }
 
-  // Iteracja przez kategorie
+  // Iterate through the categories
   Object.keys(data).forEach((category) => {
     const menuItem = document.createElement("li");
     menuItem.className = "menu-item dropdown";
 
+    // Create the main category link
     const link = document.createElement("a");
-    link.href = "#";
+    link.href = `searching.html?category=${encodeURIComponent(category)}`; // Main category redirects with `category=`
     link.textContent = category.toUpperCase();
 
+    // Create the dropdown menu
     const dropdown = document.createElement("div");
     dropdown.className = "dropdown-menu";
 
-    // Tworzenie kolumn dla podkategorii
+    // Create columns for subcategories
     Object.keys(data[category]).forEach((subCategory) => {
       const column = document.createElement("div");
       column.className = "menu-column";
@@ -288,21 +291,16 @@ function buildMenu(data) {
       const hr = document.createElement("hr");
       const list = document.createElement("ul");
 
-      // Dodawanie elementów listy
+      // Add list items for subcategory elements
       data[category][subCategory].forEach((item) => {
         const listItem = document.createElement("li");
-
-        // Tworzenie linku dla każdej opcji
         const subLink = document.createElement("a");
-        subLink.href = `searching.html?q=${encodeURIComponent(item)}`; // Add query parameter
-        subLink.textContent = item;
 
-        // Dodanie event listenera dla kliknięcia, aby zmienić adres URL
-        subLink.addEventListener("click", function (event) {
-          event.preventDefault(); // Prevent default navigation
-          const query = `q=${encodeURIComponent(item)}`;
-          window.location.href = `searching.html?${query}`;
-        });
+        // Subcategory link redirects with `category=` and `filter=`
+        subLink.href = `searching.html?category=${encodeURIComponent(
+          category
+        )}&filter=${encodeURIComponent(item)}`;
+        subLink.textContent = item;
 
         listItem.appendChild(subLink);
         list.appendChild(listItem);
