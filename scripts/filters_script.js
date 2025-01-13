@@ -115,37 +115,43 @@ loadCategoryData().then(() => {
   });
 });
 
-// Construct the search URL based on selected filters
+// Construct the search URL by appending to the current query
 function constructSearchURL() {
-  const params = new URLSearchParams();
+  const params = new URLSearchParams(window.location.search);
 
-  // Add price range to parameters
-  params.append("priceMin", priceMin.value);
-  params.append("priceMax", priceMax.value);
+  // Add or update price range in the parameters
+  params.set("priceMin", priceMin.value);
+  params.set("priceMax", priceMax.value);
 
-  // Add selected category to parameters
+  // Add or update selected category in the parameters
   const selectedCategory = document.querySelector('input[name="category"]:checked');
   if (selectedCategory && selectedCategory.value !== "none") {
-    params.append("category", selectedCategory.value);
+    params.set("category", selectedCategory.value);
+  } else {
+    params.delete("category"); // Remove category if "none" is selected
   }
 
-  // Add selected sort option to parameters
+  // Add or update selected sort option in the parameters
   const selectedSort = document.querySelector('input[name="sort"]:checked');
   if (selectedSort && selectedSort.id !== "no-sort") {
-    params.append("sort", selectedSort.id);
+    params.set("sort", selectedSort.id);
+  } else {
+    params.delete("sort"); // Remove sort if "Brak sortowania" is selected
   }
 
-  // Add selected checkboxes to parameters
+  // Add or update selected checkboxes in the parameters
   const selectedCheckboxes = Array.from(document.querySelectorAll(".filter-checkbox:checked"));
   if (selectedCheckboxes.length > 0) {
     const selectedValues = selectedCheckboxes.map((checkbox) =>
       checkbox.nextSibling.textContent.trim()
     );
-    params.append("filters", selectedValues.join(","));
+    params.set("filters", selectedValues.join(","));
+  } else {
+    params.delete("filters"); // Remove filters if no checkboxes are selected
   }
 
-  // Redirect to the search page with constructed parameters
-  window.location.href = `searching.html?${params.toString()}`;
+  // Redirect to the updated URL
+  window.location.href = `filters.html?${params.toString()}`;
 }
 
 // Add event listener to the "Apply Filters" button
