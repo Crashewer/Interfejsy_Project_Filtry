@@ -258,13 +258,10 @@ function getFromLocalStorage(key) {
 //budowanie header
 // FUNKCJA DO BUDOWANIA MENU W NAGLOWKU
 function buildMenu(data) {
-  // Znajdź element <ul> o klasie "menu" wewnątrz elementu z klasą "header"
   const menu = document.querySelector(".header ul.menu");
 
   if (!menu) {
-    console.error(
-      "Nie znaleziono elementu <ul> z klasą 'menu' wewnątrz '.header'."
-    );
+    console.error("Nie znaleziono elementu <ul> z klasą 'menu' wewnątrz '.header'.");
     return;
   }
 
@@ -294,7 +291,20 @@ function buildMenu(data) {
       // Dodawanie elementów listy
       data[category][subCategory].forEach((item) => {
         const listItem = document.createElement("li");
-        listItem.textContent = item;
+
+        // Tworzenie linku dla każdej opcji
+        const subLink = document.createElement("a");
+        subLink.href = `searching.html?q=${encodeURIComponent(item)}`; // Add query parameter
+        subLink.textContent = item;
+
+        // Dodanie event listenera dla kliknięcia, aby zmienić adres URL
+        subLink.addEventListener("click", function (event) {
+          event.preventDefault(); // Prevent default navigation
+          const query = `q=${encodeURIComponent(item)}`;
+          window.location.href = `searching.html?${query}`;
+        });
+
+        listItem.appendChild(subLink);
         list.appendChild(listItem);
       });
 
