@@ -1,0 +1,194 @@
+:root {
+  --input-color: #faf3eb;
+  --header-color: #d2bca6;
+  --background-color: #a28f7b; /* Główny kolor (np. zielony) */
+  --hover-text-color: black;
+  --hover-background-color: #b4a492;
+  --text-color: #3c2c1e;
+}
+
+/* Stylowanie bocznego menu */
+.sidebar {
+  color: #333;
+  display: inline-block;
+  box-sizing: border-box;
+  width: 250px;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.sidebar h2 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #333;
+  padding-bottom: 10px;
+}
+
+.filter-section {
+  box-sizing: border-box;
+  background-color: #e0e0e0;
+  border-radius: 15px;
+  padding: 1px 10px;
+  margin-bottom: 10px;
+  transition: 0.3s ease;
+}
+
+.filter-section:hover {
+  scale: 1.02;
+  background-color: #d0d0d0;
+}
+
+.filter-section h3 {
+  color: tx;
+  font-size: 18px;
+  margin: 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
+
+.filter-section h3::after {
+  content: "\f077";
+  font-family: "Font Awesome 5 Free";
+  transition: transform 0.3s ease;
+}
+
+.filter-section.collapsed h3::after {
+  transform: rotate(180deg);
+}
+
+.filter-content {
+  display: block;
+  transition: max-height 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.filter-section.expanded .filter-content {
+  max-height: 500px; /* Ustaw odpowiednią maksymalną wysokość */
+}
+
+.filter-section.collapsed .filter-content {
+  display: none;
+}
+
+.filter-section label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+  color: #333;
+}
+
+.filter-section input[type="checkbox"],
+.filter-section input[type="radio"] {
+  margin-right: 10px;
+}
+
+.filter-section input[type="range"] {
+  margin: 0;
+  width: 100%;
+}
+
+/* Dodajemy styl do dynamicznego kontenera */
+.dynamic-category {
+  margin-top: 10px;
+  width: 100%;
+  box-sizing: border-box; /* Zapobiega zawężaniu przez padding */
+  overflow: hidden; /* Zapobiega przewijaniu lub dziwnemu efektowi */
+}
+
+.dynamic-category label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.price-slider {
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.price-slider input {
+  position: absolute;
+  pointer-events: none;
+  -webkit-appearance: none; /* WebKit */
+  -moz-appearance: none; /* Firefox */
+  appearance: none;
+  height: 3px;
+  background: black;
+  width: 100%; /* Ustawienie szerokości dla większej kompatybilności */
+}
+
+.price-slider input[type="range"]:nth-child(1) {
+  z-index: 100;
+}
+
+.price-slider input::-webkit-slider-thumb {
+  pointer-events: auto;
+  -webkit-appearance: none;
+  appearance: none;
+  background: black;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.price-slider input::-moz-range-thumb {
+  pointer-events: auto;
+  -moz-appearance: none; /* Firefox */
+  appearance: none;
+  background: black;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.price-slider input::-ms-thumb {
+  pointer-events: auto;
+  -ms-appearance: none; /* Internet Explorer/Edge */
+  appearance: none;
+  background: black;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.price-values {
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+/* Stylowanie przycisku */
+button {
+  margin-bottom: 10px;
+  background-color: #c6c6c6;
+  color: #3a3a3a;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 10px;
+  font-size: 18px;
+  text-align: center;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background-color: #a9a9a9;
+}
+
+.sidebar .apply-btn {
+  margin-bottom: 150px;
+}

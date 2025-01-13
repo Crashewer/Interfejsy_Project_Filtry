@@ -1,0 +1,381 @@
+/* Ogólny styl */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  min-width: 1600px;
+}
+
+/* Nagłówek */
+#header-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  align-items: center;
+}
+
+.product-header {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 10px;
+}
+
+.add-to-watchlist {
+  background: none;
+  border: none;
+  font-size: 40px;
+  color: #333;
+  cursor: pointer;
+}
+
+.add-to-watchlist .fa-regular {
+  display: block;
+}
+
+.add-to-watchlist .fa-solid {
+  display: none;
+}
+
+.add-to-watchlist:hover .fa-regular {
+  display: none;
+}
+
+.add-to-watchlist:hover .fa-solid {
+  display: block;
+}
+
+.add-to-watchlist.added .fa-regular {
+  display: none;
+}
+
+.add-to-watchlist.added .fa-solid {
+  display: block;
+}
+
+.add-to-watchlist.added:hover .fa-regular {
+  display: block;
+}
+
+.add-to-watchlist.added:hover .fa-solid {
+  display: none;
+}
+
+.main {
+  /* background-color: pink; */
+  margin-top: 130px;
+  background: #fff;
+  font-size: 16px;
+  flex-grow: 1;
+}
+
+/* Stopka */
+#footer-container {
+  z-index: 1000;
+}
+
+.product-container {
+  display: flex;
+  width: 100%;
+  background: #fff;
+  overflow: hidden;
+  height: 80vh;
+  justify-content: center;
+  position: relative;
+  min-height: 550px;
+}
+
+.thumbnails {
+  /* background-color: purple; */
+  margin-left: 5%;
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+  position: relative;
+}
+
+.thumbnails::before,
+.thumbnails::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 20%; /* Wysokość gradientu */
+  pointer-events: none;
+  z-index: 1;
+  opacity: 1; /* Domyślnie gradienty są widoczne */
+  transition: opacity 0.3s ease;
+}
+
+.thumbnails::before {
+  top: 40px; /* Gradient na górze */
+  background: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 1)
+  );
+}
+
+.thumbnails::after {
+  bottom: 40px; /* Gradient na dole */
+  background: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0)
+  );
+}
+
+/* Gradient before znika, gdy na dole */
+.thumbnails.at-top::before {
+  opacity: 0;
+}
+
+/* Gradient after znika, gdy na górze */
+.thumbnails.at-bottom::after {
+  opacity: 0;
+}
+
+/* Zdjęcia boczne */
+.product-images {
+  /* background-color: pink; */
+  overflow-y: scroll;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ukrycie paska przewijania w przeglądarkach WebKit (Chrome, Safari) */
+.product-images::-webkit-scrollbar {
+  display: none;
+}
+
+/* Ukrycie paska przewijania w Firefox */
+.product-images {
+  scrollbar-width: none; /* Ukrycie paska w Firefox */
+}
+
+.product-images {
+  -ms-overflow-style: none; /* Ukrycie scrollbar w Edge */
+}
+
+.product-images img {
+  margin: 10%;
+  max-height: 15%;
+  aspect-ratio: 1;
+  /* width: 100%; */
+  border-radius: 10%;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-images img:hover {
+  transform: scale(1.1); /* Powiększenie miniaturki po najechaniu */
+}
+
+.product-images img.selected {
+  border: 2px solid white; /* Biały border */
+  outline: 2px solid black; /* Czarne obramowanie wokół białego borderu */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Główne zdjęcie */
+.main-image {
+  /* background-color: #33a8ff; */
+  margin: 40px;
+  /* width: 40%; */
+  /* aspect-ratio: 1; */
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  /* overflow: hidden; Zapobiega wykraczaniu obrazu poza kontener */
+  /* background-color: #f5f5f5; Opcjonalne: wypełnienie tła */
+}
+
+.image-frame {
+  /* background-color: pink; */
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+  border-radius: 20px;
+  max-width: 100%;
+  /* max-height: 100%; */
+  height: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-image img {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 100%; /* Obraz nigdy nie przekracza szerokości kontenera */
+  max-height: 100%; /* Obraz nigdy nie przekracza wysokości kontenera */
+  object-fit: contain; /* Utrzymuje naturalne proporcje obrazu */
+  border-radius: 30px;
+}
+
+/* Szczegóły produktu */
+.product-details {
+  margin-right: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  /* padding: 20px; */
+  color: #3a3a3a;
+}
+
+.product-details h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.product-code {
+  color: #666;
+  font-size: 12px;
+  margin: 5px 0 15px;
+}
+
+.description {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 40px;
+}
+
+/* Rozmiary */
+.size-container,
+.color-container {
+  font-size: large;
+  margin: 15px 0;
+  /* margin-bottom: 20%; */
+}
+
+.sizes,
+.colors {
+  display: flex;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.size {
+  padding: 8px 12px;
+  border: 1px solid #999;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, scale 0.3s;
+}
+
+.size.available:hover {
+  background-color: #333;
+  color: #fff;
+  scale: 1.2;
+}
+
+.size.selected {
+  background-color: #333;
+  color: #fff;
+}
+
+.size.unavailable {
+  color: #bbb;
+  border-color: #ddd;
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+
+/* Kolory */
+.color {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  transition: scale 0.3s;
+}
+
+.color:hover {
+  scale: 1.5;
+}
+
+.color.selected {
+  border: 2px solid white; /* Biały border */
+  outline: 2px solid black; /* Czarne obramowanie wokół białego borderu */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* .color.black {
+  background-color: #000;
+}
+.color.blue {
+  background-color: #33a8ff;
+}
+.color.red {
+  background-color: #ff4b4b;
+}
+.color.purple {
+  background-color: #8a33ff;
+}
+.color.gray {
+  background-color: #888;
+} */
+
+/* Cena i przyciski */
+.price {
+  font-size: 22px;
+  font-weight: bold;
+  margin: 15px 0;
+}
+
+.cart-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.add-to-cart {
+  background-color: #704430;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.add-to-cart:hover {
+  background-color: #40281e;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quantity button {
+  width: 30px;
+  height: 30px;
+  background-color: #e0e0e0;
+  border: none;
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+  transition: scale 0.3s;
+}
+
+.quantity button:hover {
+  scale: 1.2;
+  background-color: #ccc;
+}
+
+.quantity span {
+  font-size: 16px;
+  font-weight: bold;
+}
+.quantity span {
+  font-size: 16px;
+  font-weight: bold;
+}

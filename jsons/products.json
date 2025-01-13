@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "product_code": "K2137",
+    "name": "Koszulka Basic",
+    "price": 19.99,
+    "main_img": "product1.png",
+    "available_colors": ["black", "blue", "red", "purple", "grey"],
+    "available_sizes": ["S", "XL", "XXL"],
+    "description": "T-shirt z lekkiego bawełnianego dżerseju. Okrągły dekolt ze ściągaczem, prosty brzeg u dołu."
+  },
+  {
+    "id": 2,
+    "product_code": "K2167",
+    "name": "Koszulka Basic Premium",
+    "price": 25.99,
+    "main_img": "product1.png",
+    "available_colors": ["black", "blue", "purple"],
+    "available_sizes": ["S", "M", "L", "XXL"],
+    "description": "T-shirt z najwyższej jakości lekkiego bawełnianego dżerseju najwyższej. Okrągły dekolt ze ściągaczem, prosty brzeg u dołu."
+  }
+]

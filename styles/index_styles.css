@@ -1,0 +1,16 @@
+html,
+body {
+  height: 100%; /* Ustawienie pełnej wysokości */
+  overflow: hidden; /* Ukrycie pasków przewijania */
+}
+
+.main {
+  background-image: url("../img/home_background.png");
+  background-size: cover;
+  background-position: center;
+  flex-grow: 1; /* Umożliwia rozciąganie zawartości */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%; /* Wysokość wypełnia pozostałą przestrzeń */
+}

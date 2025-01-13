@@ -1,0 +1,74 @@
+/* Resetowanie marginesów i paddingu */
+
+/* Stylizowanie body */
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  color: #3a3a3a; /* Kolor tekstu */
+  background-color: #fff; /* Białe tło sekcji */
+}
+
+/* Nagłówek */
+#header-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+/* Stylizacja głównej sekcji */
+main {
+  margin-top: 130px; /* Przestrzeń dla nagłówka */
+  padding: 20px;
+  font-size: 16px;
+  flex-grow: 1;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Cień dla sekcji */
+}
+
+/* Stylizacja sekcji */
+section {
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #ddd; /* Delikatna ramka */
+}
+
+/* Nagłówki w sekcjach */
+section h1,
+section h2 {
+  margin-bottom: 15px;
+  color: #333;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+/* Tekst w sekcjach */
+section p,
+section ul {
+  margin-bottom: 20px;
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Listy */
+section ul {
+  list-style: disc inside;
+  margin-left: 20px;
+  color: #444;
+}
+
+/* Stopka */
+#footer-container {
+  z-index: 1000;
+}
+
+/* Wyrównanie tekstu na stronie */
+.text-center {
+  text-align: center;
+}

@@ -1,0 +1,114 @@
+/* Resetowanie marginesów i paddingu */
+
+/* Stylizowanie body */
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  color: #3a3a3a; /* Kolor tekstu */
+}
+
+/* Nagłówek */
+#header-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+/* Stylizacja głównej sekcji */
+main {
+  margin-top: 130px; /* Przestrzeń dla nagłówka */
+  padding: 20px;
+  font-size: 16px;
+  flex-grow: 1;
+}
+
+/* Stylizacja sekcji */
+section {
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #ddd; /* Delikatna ramka */
+}
+
+section h1,
+section h2 {
+  margin-bottom: 15px;
+  color: #333;
+  font-size: 1.5rem;
+}
+
+section p,
+section ul {
+  margin-bottom: 20px;
+  color: #666;
+  font-size: 1rem;
+}
+
+/* Listy */
+section ul {
+  list-style: disc inside;
+  margin-left: 20px;
+}
+
+/* Przycisk CTA */
+.cta-button {
+  display: inline-block;
+  background-color: #704430; /* Kolor przycisku CTA */
+  color: #fff;
+  padding: 12px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background-color 0.3s, transform 0.2s ease-in-out;
+}
+
+.cta-button:hover {
+  background-color: #40281e; /* Kolor przycisku CTA na hover */
+  transform: translateY(-3px); /* Lekka animacja przycisku */
+}
+
+/* Linki społecznościowe */
+.social-links {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.social-links li {
+  display: inline-block;
+}
+
+.social-links a {
+  margin: 5px;
+  text-decoration: none;
+  color: #1da1f2;
+  font-size: 1.2rem;
+  transition: color 0.3s ease, transform 0.2s ease;
+  display: inline-block;
+  font-weight: bold;
+}
+
+.social-links a:hover {
+  transform: translateY(-3px);
+  color: #0d95e8;
+  transform: translateY(-3px); /* Animacja uniesienia linku */
+}
+
+/* Stopka */
+#footer-container {
+  z-index: 1000;
+}
+
+/* Wyrównanie tekstu na stronie */
+.text-center {
+  text-align: center;
+}

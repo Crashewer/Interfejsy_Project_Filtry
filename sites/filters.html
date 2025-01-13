@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../styles/filters_styles.css" />
+  </head>
+
+  <!-- Menu boczne z filtrami -->
+  <aside class="sidebar">
+    <h2>Filtry</h2>
+
+    <!-- Przycisk Wyczyść filtry -->
+    <button class="clear-btn" id="clear-filters-btn">Wyczyść filtry</button>
+
+    <div class="filter-section collapsed">
+      <h3>Kategorie</h3>
+      <div class="filter-content">
+        <!-- Opcje wyboru preferencji -->
+        <label
+          ><input
+            type="radio"
+            class="filter-radio"
+            name="category"
+            value="none"
+            checked
+          />
+          Brak preferencji</label
+        >
+        <label
+          ><input
+            type="radio"
+            class="filter-radio"
+            name="category"
+            value="ona"
+          />
+          ONA</label
+        >
+        <label
+          ><input
+            type="radio"
+            class="filter-radio"
+            name="category"
+            value="on"
+          />
+          ON</label
+        >
+        <label
+          ><input
+            type="radio"
+            class="filter-radio"
+            name="category"
+            value="dziecko"
+          />
+          DZIECKO</label
+        >
+
+        <!-- Dynamiczny kontener na kategorie -->
+        <div id="dynamic-category-content" class="dynamic-category"></div>
+      </div>
+    </div>
+
+    <div class="filter-section">
+      <h3>Zakres cen</h3>
+      <div class="filter-content">
+        <div class="price-slider">
+          <input
+            type="range"
+            id="price-min"
+            min="0"
+            max="1000"
+            value="0"
+            step="5"
+          />
+          <input
+            type="range"
+            id="price-max"
+            min="0"
+            max="1000"
+            value="1000"
+            step="5"
+          />
+        </div>
+        <div class="price-values">
+          <span id="min-value">0 zł</span>
+          <span id="max-value">1000 zł</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="filter-section">
+      <h3>Sortuj wg</h3>
+      <div class="filter-content">
+        <label
+          ><input
+            type="radio"
+            name="sort"
+            class="filter-radio"
+            id="no-sort"
+            checked
+          />
+          Brak sortowania</label
+        >
+        <label
+          ><input
+            type="radio"
+            name="sort"
+            class="filter-radio"
+            id="high-to-low"
+          />
+          Cena najwyższa</label
+        >
+        <label
+          ><input
+            type="radio"
+            name="sort"
+            class="filter-radio"
+            id="low-to-high"
+          />
+          Cena najniższa</label
+        >
+      </div>
+    </div>
+
+    <div class="filter-section collapsed">
+      <h3>Rozmiar</h3>
+      <div class="filter-content">
+        <label
+          ><input type="checkbox" class="filter-checkbox" name="size" />
+          S</label
+        >
+        <label
+          ><input type="checkbox" class="filter-checkbox" name="size" />
+          M</label
+        >
+        <label
+          ><input type="checkbox" class="filter-checkbox" name="size" />
+          L</label
+        >
+        <label
+          ><input type="checkbox" class="filter-checkbox" name="size" />
+          XL</label
+        >
+      </div>
+    </div>
+
+    <div class="filter-section collapsed">
+      <h3>Kolor</h3>
+      <div class="filter-content">
+        <label
+          ><input type="checkbox" class="filter-checkbox" /> Czerwony</label
+        >
+        <label
+          ><input type="checkbox" class="filter-checkbox" /> Niebieski</label
+        >
+        <label><input type="checkbox" class="filter-checkbox" /> Czarny</label>
+        <label><input type="checkbox" class="filter-checkbox" /> Biały</label>
+      </div>
+    </div>
+    <!-- Przycisk zastosuj -->
+    <button class="apply-btn">Zastosuj filtry</button>
+  </aside>
+
+  <script src="../scripts/filters_script.js"></script>
+</html>

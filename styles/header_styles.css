@@ -1,0 +1,390 @@
+/* Definicja zmiennych w :root */
+:root {
+  --input-color: #faf3eb;
+  --header-color: #d2bca6;
+  --background-color: #a28f7b; /* Główny kolor (np. zielony) */
+  --hover-text-color: black;
+  --hover-background-color: #b4a492;
+  --text-color: #3c2c1e;
+}
+
+/* Reset */
+body {
+  margin: 0;
+  font-family: "Arial", sans-serif;
+  color: var(--background-color);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--header-color);
+  padding: 20px 40px;
+}
+
+/* Logo */
+header .logo img {
+  max-height: 60px; /* Dostosowanie wysokości obrazu */
+  width: auto; /* Szerokość automatyczna, aby zachować proporcje */
+  transition: transform 0.2s ease; /* Dodanie animacji tła i powiększenia */
+}
+
+header .logo img:hover {
+  transform: scale(1.05); /* Powiększenie obrazu po najechaniu */
+}
+
+header .nav .menu {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+header .menu-item {
+  position: relative;
+  padding: 10px 20px;
+  border-radius: 20px 20px 0 0; /* Zaokrąglenie tylko na górze */
+  transition: background-color 0.3s ease;
+  color: var(--text-color);
+}
+
+header .menu-item a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 30px;
+}
+
+header .menu-item:hover {
+  background-color: var(--hover-background-color);
+}
+
+header .menu-item:hover > a {
+  font-weight: bold; /* Pogrubienie tekstu po najechaniu */
+}
+
+/* Animacja dla dropdown menu */
+header .dropdown-menu {
+  display: flex;
+  opacity: 0; /* Ukrycie początkowe */
+  transform: translateY(-20px); /* Początkowa pozycja */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Animacja */
+  position: absolute;
+  top: 100%; /* Umieszczone bezpośrednio poniżej kategorii */
+  left: 0;
+  background-color: var(--hover-background-color); /* Dopasowane tło */
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 0 20px 20px 20px;
+  z-index: 100;
+  min-width: 600px; /* Zwiększenie minimalnej szerokości dla całego dropdown menu */
+  pointer-events: none; /* Aby dropdown nie blokował interakcji, gdy jest ukryty */
+}
+
+header .dropdown-menu hr {
+  border: 0;
+  border-top: 1px solid var(--text-color); /* Kolor linii */
+  margin: 0 0; /* Odstęp nad i pod linią */
+}
+
+header .menu-item:hover .dropdown-menu {
+  opacity: 1; /* Widoczność */
+  transform: translateY(0); /* Powrót do początkowej pozycji */
+  pointer-events: auto; /* Aktywacja interakcji */
+}
+
+/* Układ kolumn w dropdown menu */
+header .dropdown-menu .menu-column {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Zwiększenie odstępów między kategoriami */
+  min-width: 150px; /* Zwiększenie minimalnej szerokości każdej kolumny */
+  flex-grow: 1; /* Sprawia, że kolumny mogą się rozszerzać, aby wypełnić dostępną przestrzeń */
+}
+
+header .dropdown-menu h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 18px; /* Zwiększenie rozmiaru czcionki */
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+header .dropdown-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+header .dropdown-menu li {
+  margin-bottom: 8px; /* Zwiększenie odstępu */
+  font-size: 16px; /* Zwiększenie rozmiaru czcionki */
+  transition: transform 0.3s ease; /* Animacja dla unoszenia */
+}
+
+/* Efekt unoszenia dla elementów w dropdown */
+header .dropdown-menu li:hover {
+  color: var(--hover-text-color);
+  font-weight: bold;
+  transform: translateY(-2px); /* Uniesienie elementu */
+}
+
+header .icons {
+  display: flex;
+  color: var(--text-color);
+  align-items: center; /* Wyrównanie ikon w pionie */
+  gap: 20px;
+  font-size: 40px;
+  transition: transform 0.2s ease; /* Dodanie animacji tła i powiększenia */
+}
+
+/* Styl dla linków */
+header .icons a {
+  padding: 5px;
+  text-decoration: none; /* Usunięcie podkreślenia */
+  color: inherit; /* Zachowanie domyślnego koloru */
+}
+
+header .icons a:hover {
+  color: var(--hover-text-color);
+  transform: scale(1.05);
+}
+
+/* Dla stanu aktywnego (kliknięty link) */
+header .icons a:active,
+header .icons a:focus {
+  outline: none; /* Usunięcie obramowania */
+  color: inherit; /* Zachowanie koloru ikony */
+}
+
+/* Usunięcie stylu dla odwiedzonego linku */
+header .icons a:visited {
+  color: inherit;
+}
+
+/* Stylowanie dla ikony użytkownika */
+header .user-icon {
+  position: relative;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 30px 30px 0 0;
+  transition: background-color 0.2s ease; /* Dodanie animacji tła i powiększenia */
+}
+
+/* Efekt kliknięcia dla ikony użytkownika - zmiana tła */
+header .user-icon.active {
+  background-color: var(
+    --hover-background-color
+  ); /* Kolor tła przy kliknięciu */
+}
+
+header .user-icon:hover {
+  transform: scale(1.05); /* Powiększenie ikony po kliknięciu */
+  color: var(--hover-text-color);
+}
+
+/* Stylowanie dla dropdown menu użytkownika */
+header .user-dropdown {
+  display: flex;
+  opacity: 0; /* Ukrycie początkowe */
+  transform: translateY(-20px); /* Początkowa pozycja */
+  transition: opacity 0.2s ease, transform 0.2s ease; /* Animacja */
+  position: absolute;
+  top: 100%; /* Umieszczone poniżej ikony */
+  right: 0;
+  background-color: var(--hover-background-color);
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 20px 0 20px 20px;
+  z-index: 100;
+  min-width: 120px;
+  pointer-events: none; /* Zapobieganie interakcjom, gdy jest ukryte */
+}
+
+/* Listy w menu */
+header .user-dropdown ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Stylowanie dla pozycji menu */
+header .user-dropdown li {
+  margin-bottom: 8px;
+  font-size: 16px;
+  transition: transform 0.2s ease; /* Animacja dla unoszenia */
+}
+
+/* Efekt unoszenia dla pozycji menu */
+header .user-dropdown li:hover {
+  color: var(--hover-text-color);
+  font-weight: bold;
+  transform: translateY(-2px);
+}
+
+/* Pokazanie dropdown menu po kliknięciu na ikonę użytkownika */
+header .user-icon.active .user-dropdown {
+  opacity: 1; /* Pokazanie menu */
+  transform: translateY(0); /* Powrót do pozycji docelowej */
+  pointer-events: auto; /* Umożliwienie interakcji */
+}
+
+/* Minimalistyczny pasek wyszukiwania obok kategorii DZIECKO */
+header .search-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 20px; /* Odstęp od kategorii DZIECKO */
+}
+
+header .search-bar input {
+  border: none;
+  border-bottom: 3px solid var(--text-color); /* Kreska zamiast ramki */
+  background-color: transparent;
+  font-size: 30px;
+  color: var(--text-color);
+  padding: 5px 0;
+  outline: none; /* Usunięcie konturu */
+  width: 300px; /* Szerokość pola wyszukiwania */
+}
+
+header .search-bar button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 30px; /* Większa ikona lupy */
+  color: var(--text-color);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+header .search-bar button:hover {
+  color: var(--hover-text-color); /* Zmiana koloru przy najechaniu */
+  transform: translateY(-2px);
+}
+
+/* Ustawienie pozycji wyszukiwania obok kategorii DZIECKO */
+header .nav .menu-item:last-child {
+  display: flex;
+  align-items: center;
+}
+
+/* Ogólne ustawienia dla popupów */
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup .popup-content {
+  background-color: var(--header-color);
+  color: var(--text-color);
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box; /* Zapobiega przesuwaniu się elementów poza kontener */
+  display: flex;
+  flex-direction: column; /* Ustawienie układu kolumnowego */
+}
+
+.popup .close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #333;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.popup h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Style dla formularza */
+.popup form {
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Ustawienie szerokości formularza na 100% */
+}
+
+.popup label {
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+.popup input {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: none;
+  background-color: var(--input-color);
+  border-radius: 5px;
+  font-size: 14px;
+  width: 100%; /* Zapewnia, że inputy będą miały pełną szerokość kontenera */
+  box-sizing: border-box; /* Umożliwia prawidłowe obliczanie szerokości */
+}
+
+.popup button[type="submit"] {
+  padding: 10px;
+  background-color: var(--input-color);
+  color: var(--text-color);
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.popup button[type="submit"]:hover {
+  font-weight: bold;
+  background-color: var(--hover-background-color);
+}
+
+/* Kontener hasła */
+.popup .password-container {
+  position: relative;
+}
+
+/* Reakcja na otwarcie popupu */
+#login-popup:target,
+#register-popup:target {
+  display: flex;
+}
+
+#middle-part {
+  margin-left: 40px;
+  margin-right: 40px;
+  display: flex; /* Ustawia Flexbox jako model układu */
+  flex-wrap: wrap; /* Pozwala na zawijanie elementów do nowej linii, jeśli nie mieszczą się w szerokości */
+  box-sizing: border-box; /* Zapobiega przekraczaniu szerokości przez padding */
+  justify-content: center;
+}
+
+.cart-icon {
+  position: relative;
+}
+
+.cart-icon .cart-count {
+  position: absolute;
+  top: 70%;
+  right: 5%;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+}

@@ -1,0 +1,157 @@
+<head>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+  <link rel="stylesheet" href="../styles/header_styles.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <a href="../sites/index.html">
+        <img src="../img/logo.png" alt="Mintmade Fashion Logo" />
+      </a>
+    </div>
+    <nav class="nav">
+      <div id="middle-part">
+        <ul class="menu"></ul>
+        <!-- Pasek wyszukiwania obok kategorii DZIECKO -->
+        <li class="search-bar">
+          <button id="search-button">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+          <input type="text" id="search-input" placeholder="Szukaj..."/>
+        </li>
+      </div>
+    </nav>
+    <div class="icons">
+      <a href="../sites/profile.html#watchlist" aria-label="Ulubione">
+        <span><i class="fa-solid fa-heart"></i></span>
+      </a>
+      <a href="../sites/cart.html" aria-label="Koszyk" class="cart-icon">
+        <span>
+          <i class="fa-solid fa-basket-shopping"></i>
+          <span class="cart-count">0</span>
+        </span>
+      </a>
+
+      <!-- Ikona użytkownika (przycisk) z rozwijanym menu -->
+      <span class="user-icon">
+        <i class="fa-solid fa-circle-user"></i>
+        <div class="user-dropdown">
+          <ul>
+            <li>ZALOGUJ</li>
+            <li>ZAREJESTRUJ</li>
+            <li style="display: none" id="profile">PROFIL</li>
+            <li style="display: none" id="logout">WYLOGUJ</li>
+          </ul>
+        </div>
+      </span>
+    </div>
+  </header>
+
+  <!-- Popup logowania -->
+  <div id="login-popup" class="popup">
+    <div class="popup-content">
+      <button class="close-btn" id="close-login-popup">&times;</button>
+      <h2>Zaloguj się</h2>
+      <form id="login-form">
+        <label for="login-email">Email</label>
+        <input
+          type="email"
+          id="login-email"
+          placeholder="Wpisz swój email"
+          required
+        />
+        <label for="login-password">Hasło</label>
+        <div class="password-container">
+          <input
+            type="password"
+            id="login-password"
+            placeholder="Wpisz hasło"
+            required
+          />
+        </div>
+        <button type="submit">Zaloguj</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Popup rejestracji -->
+  <div id="register-popup" class="popup">
+    <div class="popup-content">
+      <button class="close-btn" id="close-register-popup">&times;</button>
+      <h2>Zarejestruj się</h2>
+      <form id="register-form">
+        <label for="register-email">Email</label>
+        <input
+          type="email"
+          id="register-email"
+          placeholder="Wpisz swój email"
+          required
+        />
+
+        <label for="register-password">Hasło</label>
+        <div class="password-container">
+          <input
+            type="password"
+            id="register-password"
+            placeholder="Wpisz hasło"
+            required
+          />
+        </div>
+
+        <label for="register-confirm-password">Powtórz hasło</label>
+        <input
+          type="password"
+          id="register-confirm-password"
+          placeholder="Powtórz hasło"
+          required
+        />
+
+        <label for="register-first-name">Imię</label>
+        <input
+          type="text"
+          id="register-first-name"
+          placeholder="Wpisz swoje imię"
+          required
+        />
+        <label for="register-last-name">Nazwisko</label>
+        <input
+          type="text"
+          id="register-last-name"
+          placeholder="Wpisz swoje nazwisko"
+          required
+        />
+
+        <label for="register-address">Adres</label>
+        <input
+          type="text"
+          id="register-address"
+          placeholder="Wpisz swój adres"
+          required
+        />
+
+        <label for="register-city">Miasto</label>
+        <input
+          type="text"
+          id="register-city"
+          placeholder="Wpisz swoje miasto"
+          required
+        />
+
+        <label for="register-zipcode">Kod pocztowy</label>
+        <input
+          type="text"
+          id="register-zipcode"
+          placeholder="Wpisz kod pocztowy"
+          required
+        />
+
+        <button type="submit">Zarejestruj się</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="../scripts/header_script.js"></script>
+</body>

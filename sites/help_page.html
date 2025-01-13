@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pomoc - Sklep z Ubraniami</title>
+    <script src="../scripts/load_header_and_footer.js" defer></script>
+    <link rel="stylesheet" href="../styles/help_page_styles.css" />
+  </head>
+  <body>
+    <div id="header-container"></div>
+
+    <main>
+      <section class="help">
+        <h1>Skontaktuj się z nami</h1>
+        <p>
+          Jeśli masz jakiekolwiek pytania lub problemy, wypełnij poniższy
+          formularz, a nasz zespół skontaktuje się z Tobą tak szybko, jak to
+          możliwe.
+        </p>
+
+        <form id="contact-form">
+          <div class="form-group">
+            <label for="email">Twój e-mail:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              placeholder="Wpisz swój adres e-mail"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Tytuł zgłoszenia:</label>
+            <input
+              type="text"
+              id="subject"
+              name="subject"
+              required
+              placeholder="Wpisz tytuł zgłoszenia"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="problem-description">Opis problemu:</label>
+            <textarea
+              id="problem-description"
+              name="problem_description"
+              required
+              placeholder="Opisz swój problem"
+              rows="6"
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <button type="submit" class="submit-btn">Wyślij</button>
+          </div>
+        </form>
+
+        <!-- Komunikat o wysłaniu -->
+        <div
+          id="confirmation-message"
+          class="confirmation-message"
+          style="display: none"
+        >
+          Zgłoszenie zostało wysłane. Dziękujemy za kontakt!
+          <br />
+          <a href="./index.html" class="go-home-link">Wróć na stronę główną</a>
+        </div>
+      </section>
+    </main>
+
+    <div id="footer-container"></div>
+
+    <script src="../scripts/help_page_script.js"></script>
+  </body>
+</html>

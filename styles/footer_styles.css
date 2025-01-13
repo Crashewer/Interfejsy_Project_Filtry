@@ -1,0 +1,50 @@
+/* Stopka */
+:root {
+  --input-color: #faf3eb;
+  --header-color: #d2bca6;
+  --background-color: #a28f7b; /* Główny kolor (np. zielony) */
+  --hover-text-color: black;
+  --hover-background-color: #b4a492;
+  --text-color: #3c2c1e;
+}
+
+body {
+  margin: 0;
+  font-family: "Arial", sans-serif;
+  color: var(--background-color);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  background-color: var(--header-color);
+  padding: 20px;
+  text-align: center;
+  width: 100%; /* Zapewnia, że stopka ma szerokość 100% */
+  box-sizing: border-box; /* Zawiera padding w szerokości */
+  margin-top: auto; /* Automatycznie przesuwa stopkę na dół */
+}
+
+.footer-menu {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-menu li a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: normal;
+  display: inline-block;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.footer-menu li a:hover {
+  color: var(--hover-text-color);
+  font-weight: bold;
+  transform: translateY(-2px);
+}
