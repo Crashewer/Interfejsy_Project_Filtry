@@ -151,7 +151,7 @@ function constructSearchURL() {
   }
 
   // Redirect to the updated URL
-  window.location.href = `filters.html?${params.toString()}`;
+  window.location.href = `searching.html?${params.toString()}`;
 }
 
 // Add event listener to the "Apply Filters" button
