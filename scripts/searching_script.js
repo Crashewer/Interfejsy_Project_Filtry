@@ -15,8 +15,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   }
 
-  // Funkcja do filtrowania produktów na podstawie zapytania
-  // Function to filter products based on the query and URL parameters
 function filterProducts(products) {
   const urlParams = new URLSearchParams(window.location.search);
 
@@ -35,7 +33,7 @@ function filterProducts(products) {
   // Filter products based on the criteria
   const filteredProducts = products.filter((product) => {
     // Filter by query
-    const matchesQuery = product.name.toLowerCase().includes(query.toLowerCase());
+    const matchesQuery = !query || product.name.toLowerCase().includes(query.toLowerCase());
 
     // Filter by price range
     const withinPriceRange = (!maxPrice || product.price <= maxPrice) && 
