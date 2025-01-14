@@ -274,7 +274,7 @@ function buildMenu(data) {
     menuItem.className = "menu-item dropdown";
 
     const link = document.createElement("a");
-    link.href = 'searching.html?category=${encodeURIComponent(category)}';
+    link.href = `searching.html?category=${encodeURIComponent(category)}`;
     link.textContent = category.toUpperCase();
 
     const dropdown = document.createElement("div");
