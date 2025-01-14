@@ -16,11 +16,56 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Funkcja do filtrowania produktów na podstawie zapytania
-  function filterProducts(products, query) {
-    return products.filter((product) =>
-      product.name.toLowerCase().includes(query.toLowerCase())
-    );
+  // Function to filter products based on the query and URL parameters
+function filterProducts(products) {
+  const urlParams = new URLSearchParams(window.location.search);
+
+  // Extract filtering criteria from the URL
+  const query = urlParams.get("q") || "";
+  const maxPrice = parseFloat(urlParams.get("priceMax")) || null;
+  const minPrice = parseFloat(urlParams.get("priceMin")) || null;
+  const category = urlParams.get("category") || null;
+  const filters = urlParams.get("filters") ? urlParams.get("filters").split(",") : [];
+  const sort = urlParams.get("sort") || null;
+
+  // Extract selected colors and sizes from the URL
+  const colors = urlParams.get("colors") ? urlParams.get("colors").split(",") : [];
+  const sizes = urlParams.get("sizes") ? urlParams.get("sizes").split(",") : [];
+
+  // Filter products based on the criteria
+  const filteredProducts = products.filter((product) => {
+    // Filter by query
+    const matchesQuery = product.name.toLowerCase().includes(query.toLowerCase());
+
+    // Filter by price range
+    const withinPriceRange = (!maxPrice || product.price <= maxPrice) && 
+                             (!minPrice || product.price >= minPrice);
+
+    // Filter by category
+    const matchesCategory = !category || product.categories.includes(category);
+
+    // Filter by tags (filters)
+    const matchesFilters = filters.length === 0 || filters.some((filter) => product.tags.includes(filter));
+
+    // Filter by colors
+    const matchesColors = colors.length === 0 || colors.some((color) => product.available_colors.includes(color));
+
+    // Filter by sizes
+    const matchesSizes = sizes.length === 0 || sizes.some((size) => product.available_sizes.includes(size));
+
+    // Return true if all criteria match
+    return matchesQuery && withinPriceRange && matchesCategory && matchesFilters && matchesColors && matchesSizes;
+  });
+
+  // Sort products based on the selected sorting type
+  if (sort === "low-to-high") {
+    filteredProducts.sort((a, b) => a.price - b.price); // Sort by price ascending
+  } else if (sort === "high-to-low") {
+    filteredProducts.sort((a, b) => b.price - a.price); // Sort by price descending
   }
+
+  return filteredProducts;
+}
 
   // Funkcja do tworzenia kafelków z wyników wyszukiwania
   function displayProducts(products) {
