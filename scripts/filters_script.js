@@ -130,22 +130,40 @@ function constructSearchURL() {
     params.delete("sort"); // Remove sort if "Brak sortowania" is selected
   }
 
-  // Add or update selected checkboxes in the parameters
+  // Separate colors and general filters
   const selectedCheckboxes = Array.from(document.querySelectorAll(".filter-checkbox:checked"));
-  if (selectedCheckboxes.length > 0) {
-    const selectedValues = selectedCheckboxes.map((checkbox) => {
-      const colorMap = {
-        "Czerwony": "red",
-        "Niebieski": "blue",
-        "Czarny": "black",
-        "Biały": "white"
-      };
-      // Map the Polish color name to the English value
-      return colorMap[checkbox.nextSibling.textContent.trim()] || checkbox.nextSibling.textContent.trim();
-    });
-    params.set("filters", selectedValues.join(","));
+  const colorMap = {
+    "Czerwony": "red",
+    "Niebieski": "blue",
+    "Czarny": "black",
+    "Biały": "white",
+  };
+
+  const selectedColors = [];
+  const selectedFilters = [];
+
+  selectedCheckboxes.forEach((checkbox) => {
+    const filterName = checkbox.nextSibling.textContent.trim();
+    const mappedColor = colorMap[filterName];
+    if (mappedColor) {
+      selectedColors.push(mappedColor); // Add to colors if it matches a color
+    } else {
+      selectedFilters.push(filterName); // Otherwise, add to general filters
+    }
+  });
+
+  // Add or update the `colors` parameter
+  if (selectedColors.length > 0) {
+    params.set("colors", selectedColors.join(","));
   } else {
-    params.delete("filters"); // Remove filters if no checkboxes are selected
+    params.delete("colors"); // Remove colors if none are selected
+  }
+
+  // Add or update the `filters` parameter
+  if (selectedFilters.length > 0) {
+    params.set("filters", selectedFilters.join(","));
+  } else {
+    params.delete("filters"); // Remove filters if none are selected
   }
 
   // Construct the new URL with preserved filters
