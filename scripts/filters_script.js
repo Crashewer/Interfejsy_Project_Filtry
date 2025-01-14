@@ -102,6 +102,7 @@ loadCategoryData().then(() => {
 });
 
 // Construct the search URL by appending to the current query
+// Construct the search URL by appending to the current query
 function constructSearchURL() {
   const params = new URLSearchParams(window.location.search);
 
@@ -123,6 +124,7 @@ function constructSearchURL() {
   // Add or update selected sort option in the parameters
   const selectedSort = document.querySelector('input[name="sort"]:checked');
   if (selectedSort && selectedSort.id !== "no-sort") {
+    // Add the selected sort method to the URL (e.g., "high-to-low" or "low-to-high")
     params.set("sort", selectedSort.id);
   } else {
     params.delete("sort"); // Remove sort if "Brak sortowania" is selected
