@@ -299,7 +299,7 @@ function buildMenu(data) {
         // Make the listItem clickable
         listItem.style.cursor = "pointer"; // Add pointer cursor to indicate clickability
         listItem.onclick = () => {
-          window.location.href = `searching.html?category=${encodeURIComponent(category)}&filter=${encodeURIComponent(subCategory)}&item=${encodeURIComponent(item)}`;
+          window.location.href = `searching.html?category=${encodeURIComponent(category)}&filters=${encodeURIComponent(item)}`;
         };
       
         list.appendChild(listItem);
