@@ -19,7 +19,7 @@ function filterProducts(products) {
   const urlParams = new URLSearchParams(window.location.search);
 
   // Extract filtering criteria from the URL
-  const query = urlParams.get("q") || "";
+  const query = urlParams.get("q") || null;
   const maxPrice = parseFloat(urlParams.get("priceMax")) || null;
   const minPrice = parseFloat(urlParams.get("priceMin")) || null;
   const category = urlParams.get("category") || null;
