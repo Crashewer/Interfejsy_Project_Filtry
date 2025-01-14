@@ -7,6 +7,8 @@
     "main_img": "product1.png",
     "available_colors": ["black", "blue", "red", "purple", "grey"],
     "available_sizes": ["S", "XL", "XXL"],
+    "categories" : ["ona", "on"],
+    "tags": ["koszulki"],
     "description": "T-shirt z lekkiego bawełnianego dżerseju. Okrągły dekolt ze ściągaczem, prosty brzeg u dołu."
   },
   {
@@ -17,6 +19,8 @@
     "main_img": "product1.png",
     "available_colors": ["black", "blue", "purple"],
     "available_sizes": ["S", "M", "L", "XXL"],
+    "categories" : ["ona", "on"],
+    "tags": ["koszulki"],
     "description": "T-shirt z najwyższej jakości lekkiego bawełnianego dżerseju najwyższej. Okrągły dekolt ze ściągaczem, prosty brzeg u dołu."
   }
 ]
