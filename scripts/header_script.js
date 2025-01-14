@@ -317,7 +317,7 @@ function buildMenu(data) {
     menu.appendChild(menuItem);
   });
 }
-
+//
 // Funkcja do załadowania danych z pliku JSON i przekształcenia ich do odpowiedniej struktury
 function loadCategoryData() {
   console.log("Ładowanie danych...");
