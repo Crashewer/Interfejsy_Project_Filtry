@@ -105,12 +105,8 @@ loadCategoryData().then(() => {
 function constructSearchURL() {
   const params = new URLSearchParams(window.location.search);
 
-  // Preserve the `q` parameter
+  // Preserve the `q` parameter if it exists, otherwise leave it out
   const query = params.get("q");
-  if (!query) {
-    console.error("No search query (`q`) found in the URL!");
-    return;
-  }
 
   // Add or update price range in the parameters
   params.set("priceMin", priceMin.value);
@@ -135,23 +131,21 @@ function constructSearchURL() {
   // Add or update selected checkboxes in the parameters
   const selectedCheckboxes = Array.from(document.querySelectorAll(".filter-checkbox:checked"));
   if (selectedCheckboxes.length > 0) {
-    const selectedValues = selectedCheckboxes.map((checkbox) => {
-      const colorMap = {
-        "Czerwony": "red",
-        "Niebieski": "blue",
-        "Czarny": "black",
-        "Biały": "white"
-      };
-      // Map the Polish color name to the English value
-      return colorMap[checkbox.nextSibling.textContent.trim()] || checkbox.nextSibling.textContent.trim();
-    });
+    const selectedValues = selectedCheckboxes.map((checkbox) =>
+      checkbox.nextSibling.textContent.trim()
+    );
     params.set("filters", selectedValues.join(","));
   } else {
     params.delete("filters"); // Remove filters if no checkboxes are selected
   }
 
-  // Construct the new URL with preserved `q` and updated filters
-  const newURL = `searching.html?${params.toString()}`;
+  // Construct the new URL with preserved filters
+  let newURL = `searching.html?${params.toString()}`;
+
+  // If `q` parameter doesn't exist, remove it from the URL
+  if (!query) {
+    newURL = `searching.html?${params.toString().replace(/&?q=[^&]*/, "")}`; // Remove `q` if it doesn't exist
+  }
 
   // Redirect to the new URL
   window.location.href = newURL;
