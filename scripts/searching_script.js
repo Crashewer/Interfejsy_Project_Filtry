@@ -19,7 +19,7 @@ function filterProducts(products) {
   const urlParams = new URLSearchParams(window.location.search);
 
   // Extract filtering criteria from the URL
-  const query = urlParams.get("q") || null;
+  const query = urlParams.get("q"); // Note: No default null value needed
   const maxPrice = parseFloat(urlParams.get("priceMax")) || null;
   const minPrice = parseFloat(urlParams.get("priceMin")) || null;
   const category = urlParams.get("category") || null;
@@ -33,7 +33,7 @@ function filterProducts(products) {
   // Filter products based on the criteria
   const filteredProducts = products.filter((product) => {
     // Filter by query
-    const matchesQuery = !query || product.name.toLowerCase().includes(query.toLowerCase());
+    const matchesQuery = query === null || product.name.toLowerCase().includes(query.toLowerCase());
 
     // Filter by price range
     const withinPriceRange = (!maxPrice || product.price <= maxPrice) && 
@@ -64,7 +64,6 @@ function filterProducts(products) {
 
   return filteredProducts;
 }
-
   // Funkcja do tworzenia kafelków z wyników wyszukiwania
   function displayProducts(products) {
     const tilesContainer = document.getElementById("tiles");
