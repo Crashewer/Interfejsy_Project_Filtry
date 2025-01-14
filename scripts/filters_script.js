@@ -135,9 +135,16 @@ function constructSearchURL() {
   // Add or update selected checkboxes in the parameters
   const selectedCheckboxes = Array.from(document.querySelectorAll(".filter-checkbox:checked"));
   if (selectedCheckboxes.length > 0) {
-    const selectedValues = selectedCheckboxes.map((checkbox) =>
-      checkbox.nextSibling.textContent.trim()
-    );
+    const selectedValues = selectedCheckboxes.map((checkbox) => {
+      const colorMap = {
+        "Czerwony": "red",
+        "Niebieski": "blue",
+        "Czarny": "black",
+        "Biały": "white"
+      };
+      // Map the Polish color name to the English value
+      return colorMap[checkbox.nextSibling.textContent.trim()] || checkbox.nextSibling.textContent.trim();
+    });
     params.set("filters", selectedValues.join(","));
   } else {
     params.delete("filters"); // Remove filters if no checkboxes are selected
