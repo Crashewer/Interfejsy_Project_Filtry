@@ -258,29 +258,29 @@ function getFromLocalStorage(key) {
 //budowanie header
 // FUNKCJA DO BUDOWANIA MENU W NAGLOWKU
 function buildMenu(data) {
-  // Find the <ul> element with class "menu" inside the header
+  // Znajdź element <ul> o klasie "menu" wewnątrz elementu z klasą "header"
   const menu = document.querySelector(".header ul.menu");
 
   if (!menu) {
-    console.error("Element <ul> with class 'menu' inside '.header' not found.");
+    console.error(
+      "Nie znaleziono elementu <ul> z klasą 'menu' wewnątrz '.header'."
+    );
     return;
   }
 
-  // Iterate through the categories
+  // Iteracja przez kategorie
   Object.keys(data).forEach((category) => {
     const menuItem = document.createElement("li");
     menuItem.className = "menu-item dropdown";
 
-    // Create the main category link
     const link = document.createElement("a");
-    link.href = `searching.html?category=${encodeURIComponent(category)}`; // Main category redirects with `category=`
+    link.href = "searching.html?category=${encodeURIComponent(category)}";
     link.textContent = category.toUpperCase();
 
-    // Create the dropdown menu
     const dropdown = document.createElement("div");
     dropdown.className = "dropdown-menu";
 
-    // Create columns for subcategories
+    // Tworzenie kolumn dla podkategorii
     Object.keys(data[category]).forEach((subCategory) => {
       const column = document.createElement("div");
       column.className = "menu-column";
@@ -291,18 +291,16 @@ function buildMenu(data) {
       const hr = document.createElement("hr");
       const list = document.createElement("ul");
 
-      // Add list items for subcategory elements
+      // Dodawanie elementów listy
       data[category][subCategory].forEach((item) => {
         const listItem = document.createElement("li");
-        const subLink = document.createElement("a");
-
-        // Subcategory link redirects with `category=` and `filter=`
-        subLink.href = `searching.html?category=${encodeURIComponent(
-          category
-        )}&filter=${encodeURIComponent(item)}`;
-        subLink.textContent = item;
-
-        listItem.appendChild(subLink);
+        listItem.textContent = item;
+        
+        const link = document.createElement("a");
+        link.textContent = item;
+        link.href = "searching.html?category=${encodeURIComponent(category)}&filter=${encodeURIComponent(item)}";
+      
+        listItem.appendChild(link);
         list.appendChild(listItem);
       });
 
@@ -317,7 +315,7 @@ function buildMenu(data) {
     menu.appendChild(menuItem);
   });
 }
-//
+
 // Funkcja do załadowania danych z pliku JSON i przekształcenia ich do odpowiedniej struktury
 function loadCategoryData() {
   console.log("Ładowanie danych...");
