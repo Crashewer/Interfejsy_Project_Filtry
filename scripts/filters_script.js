@@ -102,7 +102,6 @@ loadCategoryData().then(() => {
 });
 
 // Construct the search URL by appending to the current query
-// Construct the search URL by appending to the current query
 function constructSearchURL() {
   const params = new URLSearchParams(window.location.search);
 
@@ -124,13 +123,12 @@ function constructSearchURL() {
   // Add or update selected sort option in the parameters
   const selectedSort = document.querySelector('input[name="sort"]:checked');
   if (selectedSort && selectedSort.id !== "no-sort") {
-    // Add the selected sort method to the URL (e.g., "high-to-low" or "low-to-high")
-    params.set("sort", selectedSort.id);
+    params.set("sort", selectedSort.id); // Add the selected sort method to the URL
   } else {
     params.delete("sort"); // Remove sort if "Brak sortowania" is selected
   }
 
-  // Separate colors and general filters
+  // Separate colors, sizes, and general filters
   const selectedCheckboxes = Array.from(document.querySelectorAll(".filter-checkbox:checked"));
   const colorMap = {
     "Czerwony": "red",
@@ -138,15 +136,20 @@ function constructSearchURL() {
     "Czarny": "black",
     "Biały": "white",
   };
+  const sizeList = ["S", "M", "L", "XL", "XXL"]; // Add all valid sizes here
 
   const selectedColors = [];
+  const selectedSizes = [];
   const selectedFilters = [];
 
   selectedCheckboxes.forEach((checkbox) => {
     const filterName = checkbox.nextSibling.textContent.trim();
     const mappedColor = colorMap[filterName];
+
     if (mappedColor) {
       selectedColors.push(mappedColor); // Add to colors if it matches a color
+    } else if (sizeList.includes(filterName)) {
+      selectedSizes.push(filterName); // Add to sizes if it matches a valid size
     } else {
       selectedFilters.push(filterName); // Otherwise, add to general filters
     }
@@ -157,6 +160,13 @@ function constructSearchURL() {
     params.set("colors", selectedColors.join(","));
   } else {
     params.delete("colors"); // Remove colors if none are selected
+  }
+
+  // Add or update the `sizes` parameter
+  if (selectedSizes.length > 0) {
+    params.set("sizes", selectedSizes.join(","));
+  } else {
+    params.delete("sizes"); // Remove sizes if none are selected
   }
 
   // Add or update the `filters` parameter
